@@ -20,4 +20,10 @@ resource "aws_instance" "bia_dev" {
     ambiente = "dev"
     Name = "bia_dev"
   }
+
+  vpc_security_group_ids = [ "sg-0deb5d2378d3656b0" ]
+
+  root_block_device {
+    volume_size = 10
+  }
 }
