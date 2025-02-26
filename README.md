@@ -18,3 +18,5 @@ terraform init -migrate-state
 terraform plan -generate-config-out=out_iam.tf
 terraform destroy -target='aws_instance.bia_dev'
 terraform init -upgrade
+terraform plan -generate-config-out=out_db.tf
+terraform plan -generate-config-out=out_sg.tf
