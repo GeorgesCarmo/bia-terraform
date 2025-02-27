@@ -17,6 +17,6 @@ terraform state rm aws_security_group.bia_dev sg-6a54sadf52165s0df
 terraform init -migrate-state
 terraform plan -generate-config-out=out_iam.tf
 terraform destroy -target='aws_instance.bia_dev'
-terraform init -upgrade
+terraform init -upgrade (atualizar versão)
 terraform plan -generate-config-out=out_db.tf
 terraform plan -generate-config-out=out_sg.tf
