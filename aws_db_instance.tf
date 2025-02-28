@@ -1,23 +1,19 @@
-# __generated__ by Terraform
-# Please review these resources and move them into your main configuration files.
-
-# __generated__ by Terraform
 resource "aws_db_instance" "bia" {
-  allocated_storage                     = 20
-  allow_major_version_upgrade           = null
-  apply_immediately                     = null
-  auto_minor_version_upgrade            = true
-  availability_zone                     = "us-east-1d"
-  backup_retention_period               = 1
-  backup_target                         = "region"
-  backup_window                         = "09:33-10:03"
-  ca_cert_identifier                    = "rds-ca-rsa2048-g1"
-  character_set_name                    = null
-  copy_tags_to_snapshot                 = true
-  custom_iam_instance_profile           = null
-  customer_owned_ip_enabled             = false
-  db_name                               = null
-//  db_subnet_group_name                  = "default-vpc-056fbd49c146e2d2a"
+  allocated_storage           = 20
+  allow_major_version_upgrade = null
+  apply_immediately           = null
+  auto_minor_version_upgrade  = true
+  //  availability_zone                     = "us-east-1d"
+  backup_retention_period     = 1
+  backup_target               = "region"
+  backup_window               = "09:33-10:03"
+  ca_cert_identifier          = "rds-ca-rsa2048-g1"
+  character_set_name          = null
+  copy_tags_to_snapshot       = true
+  custom_iam_instance_profile = null
+  customer_owned_ip_enabled   = false
+  db_name                     = null
+  //  db_subnet_group_name                  = "default-vpc-056fbd49c146e2d2a"
   dedicated_log_volume                  = false
   delete_automated_backups              = true
   deletion_protection                   = false
@@ -69,4 +65,14 @@ resource "aws_db_instance" "bia" {
   upgrade_storage_config                = null
   username                              = "postgres"
   vpc_security_group_ids                = [aws_security_group.bia_db.id]
+  db_subnet_group_name                  = aws_db_subnet_group.bia.name
+}
+
+resource "aws_db_subnet_group" "bia" {
+  name       = "bia_subnet_group"
+  subnet_ids = [local.subnet_zona_a_id, local.subnet_zona_b_id]
+
+  tags = {
+    Name = "bia_subnet_group"
+  }
 }
