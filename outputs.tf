@@ -23,11 +23,16 @@ output "rds_endpoint" {
   value       = aws_db_instance.bia.endpoint
 }
 
-output "rds_secret" {
+/*output "rds_secret" {
   description = "Secret do RDS da BIA"
   value = tolist(aws_db_instance.bia.master_user_secret)[0].secret_arn
-}
+}*/
 
 output "bia_repo_url" {
   value = aws_ecr_repository.bia.repository_url
+}
+
+output "rds_secret_name" {
+  description = "Nome do meu secret"
+  value       = data.aws_secretsmanager_secret.bia_db.name
 }
