@@ -6,7 +6,7 @@ resource "aws_ecs_task_definition" "bia-web" {
       name         = "bia",
       image        = "${aws_ecr_repository.bia.repository_url}:latest",
       essential    = true
-      portMappings = [{ containerPort = 8080, hostPort = 80 }],
+      portMappings = [{ containerPort = 8080, hostPort = 0 }], //hostPort = 0 (para trabalhar com portas dinâmicas)
       cpu    = 1024
       memoryReservation = 400
       environment = [
